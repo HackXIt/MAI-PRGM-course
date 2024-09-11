@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1662050611 source:c:\users\petzm\exam\exam2\src\tile.cpp
+	"Tile.h"
+
+1662050606 c:\users\petzm\exam\exam2\include\tile.h
+	<iostream>
+	<stdlib.h>
+
