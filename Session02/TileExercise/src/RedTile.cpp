@@ -34,10 +34,6 @@ private:
 };
 */
 
-void RedTile::mark()
-{
-    marked = false;
-}
 char RedTile::getColor() const
 {
     return 'r';

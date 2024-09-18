@@ -1,11 +1,14 @@
 #include "Tile.h"
 
+Tile::Tile() : marked(false){};
+
 Tile::Tile(bool tmpMarked) : marked(tmpMarked){}
 
-Tile::~Tile(){}
+Tile::~Tile()= default;
 
-void Tile::display() const
+void Tile::mark()
 {
+    marked = true;
 }
 
 bool Tile::isMarked() const
@@ -13,7 +16,7 @@ bool Tile::isMarked() const
     return marked;
 }
 
-void Tile::display()
+std::ostream& operator<<(std::ostream &strm, const Tile &tile)
 {
-    std::cout << 'X' << " ";
+    return strm << (tile.isMarked() ? 'X' : tile.getColor()) << " ";
 }

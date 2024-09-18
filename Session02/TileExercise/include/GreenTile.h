@@ -7,8 +7,8 @@
 #include "Tile.h"
 
 
-class GreenTile : Tile{
-
+class GreenTile : public Tile{
+    char getColor() const override;
 };
 
 

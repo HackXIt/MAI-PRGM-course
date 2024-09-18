@@ -11,11 +11,7 @@ class RedTile : public Tile
 {
 public:
     RedTile();
-
-    virtual void mark(); // Marked is false, program will not replace the tile
-    virtual char getColor() const = 0;
-
-protected:
+    char getColor() const override;
 
 };
 

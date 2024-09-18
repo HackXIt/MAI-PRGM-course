@@ -4,3 +4,7 @@
 
 #include "GreenTile.h"
 
+char GreenTile::getColor() const
+{
+    return 'g';
+}

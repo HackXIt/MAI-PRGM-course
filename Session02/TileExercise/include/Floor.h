@@ -11,16 +11,19 @@ class Floor {
 public:
     Floor();
     Floor(unsigned int seed);
-    virtual ~Floor();
+    ~Floor();
+    bool isRed() const;
+    void markTile(int x, int y) const;
+    void replaceTile(int x, int y);
+    friend std::ostream& operator<<(std::ostream&, const Floor&);
+    //std::ostream& dump(std::ostream& o) const = 0; // toString
 protected:
     // ...
 private:
     // Floor is initialized with a 2-dimensional array of Tiles
     // The array is a pointer to a pointer to a Tile
-    const static int fieldsize_;
+    static constexpr int fieldsize_ = 10;
     Tile* field_[fieldsize_][fieldsize_];
-
-
 };
 
 

@@ -1,10 +1,11 @@
-## USER
+## Task assignment
 Solve this exercise using C++ language with object oriented program.
 
-## ASSISTANT
+## Solution
 Based on the exercise, here’s a structured solution using C++ with object-oriented programming principles:
 
 ### Overview of the Task:
+
 1. **Abstract Class `Tile`:** This class will serve as the base for different tile types (`RedTile`, `BlueTile`, `GreenTile`). It includes virtual functions `getColor()` and `mark()`.
 2. **Classes Inheriting from `Tile`:** Implement `RedTile`, `BlueTile`, and `GreenTile`, each with specific behavior for `mark()` and `getColor()`.
 3. **Class `Floor`:** Manages a 3x3 grid of `Tile` pointers, handles marking and replacing tiles, and ensures all tiles become `RedTile` eventually.
