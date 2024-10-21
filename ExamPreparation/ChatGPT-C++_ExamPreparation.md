@@ -2646,3 +2646,1361 @@ Compile-time selection of functions based on type traits.
 ---
 
 *Note*: For further demonstration or deeper understanding, you may consider adding additional examples or exercises to the existing implementations.
+
+
+#### You:
+Now create a README.md FOR EACH TOPIC to be placed in its respective folder, which explain the topics further and in more detail.
+
+#### ChatGPT:
+Certainly! Below are detailed `README.md` files for each topic. Each `README.md` explains the topic in more detail and references the corresponding implementation files.
+
+---
+
+## **Namespaces**
+
+### **[README.md](Namespaces/README.md)**
+
+# Namespaces
+
+## Overview
+
+Namespaces in C++ are used to organize code into logical groups and to prevent name collisions that can occur especially when your code base includes multiple libraries. They provide a scope for identifiers such as variables, classes, functions, etc.
+
+## Key Concepts
+
+### Definitions
+
+- **Namespace Declaration**: Defined using the `namespace` keyword.
+
+  ```cpp
+  namespace MyNamespace {
+      // Declarations and definitions
+  }
+  ```
+
+- **Accessing Namespace Members**: Use the scope resolution operator `::`.
+
+  ```cpp
+  MyNamespace::myFunction();
+  ```
+
+### Nested Namespaces
+
+- **Traditional Way**:
+
+  ```cpp
+  namespace Outer {
+      namespace Inner {
+          // Declarations and definitions
+      }
+  }
+  ```
+
+- **C++17 Nested Namespace Declaration**:
+
+  ```cpp
+  namespace Outer::Inner {
+      // Declarations and definitions
+  }
+  ```
+
+### Anonymous Namespaces
+
+- **Purpose**: Symbols within an anonymous namespace have internal linkage. They are unique to the translation unit (source file) and not accessible from other files.
+
+  ```cpp
+  namespace {
+      void secretFunction() {
+          // Implementation
+      }
+  }
+  ```
+
+### Using Directive
+
+- **Using Declaration**: Introduces a specific name from a namespace into the current scope.
+
+  ```cpp
+  using std::cout;
+  cout << "Hello";
+  ```
+
+- **Using Directive**: Brings all names from a namespace into the current scope.
+
+  ```cpp
+  using namespace std;
+  cout << "Hello";
+  ```
+
+## Implementation
+
+See [namespaces.cpp](namespaces.cpp) for code examples demonstrating these concepts.
+
+---
+
+## **ClassesAndObjects**
+
+### **[README.md](ClassesAndObjects/README.md)**
+
+# Classes and Objects
+
+## Overview
+
+Classes are the fundamental building blocks of object-oriented programming in C++. They encapsulate data for the object and methods to manipulate that data.
+
+## Key Concepts
+
+### OOP Principles
+
+- **Encapsulation**: Bundling data and methods that operate on that data within one unit (class).
+- **Abstraction**: Hiding complex implementation details and showing only the necessary features.
+- **Inheritance**: Deriving new classes from existing ones to promote code reuse.
+- **Polymorphism**: Ability of different classes to be treated as instances of the same class through inheritance.
+
+### Class Definitions
+
+- **Syntax**:
+
+  ```cpp
+  class ClassName {
+  private:
+      // Private members
+  public:
+      // Public members
+  protected:
+      // Protected members
+  };
+  ```
+
+- **Member Variables (Attributes)**: Variables that hold the state of an object.
+
+- **Member Functions (Methods)**: Functions that define the behavior of the object.
+
+### Object Instantiation
+
+- **Creating Objects**:
+
+  ```cpp
+  ClassName obj;           // Stack allocation
+  ClassName* ptr = new ClassName(); // Heap allocation
+  ```
+
+- **Accessing Members**:
+
+  ```cpp
+  obj.method();
+  ptr->method();
+  ```
+
+## Implementation
+
+See [classes\_and\_objects.cpp](classes_and_objects.cpp) for code examples demonstrating class definitions, member variables, methods, and object instantiation.
+
+---
+
+## **AccessModifiers**
+
+### **[README.md](AccessModifiers/README.md)**
+
+# Access Modifiers
+
+## Overview
+
+Access modifiers in C++ control the visibility and accessibility of class members. They enforce encapsulation by restricting access to the inner workings of a class.
+
+## Access Levels
+
+### Public
+
+- **Accessible**: Anywhere the object is visible.
+- **Usage**: Interface of the class; methods and variables intended for use by other classes.
+
+### Private
+
+- **Accessible**: Only within the class itself.
+- **Usage**: Internal data and helper methods not intended for external use.
+
+### Protected
+
+- **Accessible**: Within the class and its derived classes.
+- **Usage**: Allows derived classes to access base class members while keeping them hidden from other code.
+
+## Encapsulation
+
+- **Purpose**: To protect object integrity by preventing external code from setting an object to an invalid state.
+
+- **Getters and Setters**: Provide controlled access to private members.
+
+  ```cpp
+  class MyClass {
+  private:
+      int value;
+  public:
+      void setValue(int v) { value = v; }
+      int getValue() const { return value; }
+  };
+  ```
+
+## Implementation
+
+See [access\_modifiers.cpp](access_modifiers.cpp) for examples of how access modifiers are used in classes and inheritance.
+
+---
+
+## **ConstructorsDestructors**
+
+### **[README.md](ConstructorsDestructors/README.md)**
+
+# Constructors and Destructors
+
+## Overview
+
+Constructors and destructors are special member functions of a class that are responsible for initializing and cleaning up objects.
+
+## Constructors
+
+### Default Constructor
+
+- **Purpose**: Initializes objects when no arguments are provided.
+- **Syntax**:
+
+  ```cpp
+  ClassName();
+  ```
+
+### Parameterized Constructor
+
+- **Purpose**: Allows initializing objects with specific values.
+- **Syntax**:
+
+  ```cpp
+  ClassName(Type arg1, Type arg2);
+  ```
+
+### Initializer Lists
+
+- **Usage**: Initialize member variables before the constructor body executes.
+- **Syntax**:
+
+  ```cpp
+  ClassName(Type arg) : member(arg) {
+      // Constructor body
+  }
+  ```
+
+### Copy Constructor
+
+- **Purpose**: Creates a new object as a copy of an existing object.
+- **Syntax**:
+
+  ```cpp
+  ClassName(const ClassName& other);
+  ```
+
+## Destructors
+
+- **Purpose**: Clean up resources when an object goes out of scope or is deleted.
+
+- **Syntax**:
+
+  ```cpp
+  ~ClassName();
+  ```
+
+- **Automatic Invocation**: Called automatically by the compiler; no need to call explicitly.
+
+## Resource Management
+
+- **RAII**: Constructors acquire resources; destructors release them.
+- **Exception Safety**: Ensures resources are properly released even if an exception occurs.
+
+## Implementation
+
+See [constructors\_destructors.cpp](constructors_destructors.cpp) for code demonstrating different types of constructors and destructors.
+
+---
+
+## **PointerReferenceCopy**
+
+### **[README.md](PointerReferenceCopy/README.md)**
+
+# Pointer vs. Reference vs. Copy
+
+## Overview
+
+Understanding how data is passed to functions and how variables reference data is critical for effective C++ programming.
+
+## Passing by Value (Copy)
+
+- **Behavior**: The function receives a copy of the argument.
+
+- **Implications**:
+  - Changes to the parameter do not affect the original argument.
+  - Can be inefficient for large objects due to copying overhead.
+
+- **Syntax**:
+
+  ```cpp
+  void function(Type param);
+  ```
+
+## Passing by Reference
+
+- **Behavior**: The function receives a reference to the original argument.
+
+- **Implications**:
+  - Changes to the parameter affect the original argument.
+  - No copying overhead.
+  - Cannot be null.
+
+- **Syntax**:
+
+  ```cpp
+  void function(Type& param);
+  ```
+
+## Passing by Pointer
+
+- **Behavior**: The function receives a pointer to the argument.
+
+- **Implications**:
+  - Can modify the original argument.
+  - Can be null (need to check before dereferencing).
+  - Explicit dereferencing required.
+
+- **Syntax**:
+
+  ```cpp
+  void function(Type* param);
+  ```
+
+## Use Cases
+
+- **Copy**: When the function should not modify the original data, and the data is small.
+- **Reference**: When the function needs to modify the original data or to avoid copying large objects.
+- **Pointer**: Similar to references but allows for null values and pointer arithmetic.
+
+## Implementation
+
+See [pointer\_reference\_copy.cpp](pointer_reference_copy.cpp) for examples demonstrating the differences between passing by value, reference, and pointer.
+
+---
+
+## **RAII**
+
+### **[README.md](RAII/README.md)**
+
+# RAII (Resource Acquisition Is Initialization)
+
+## Overview
+
+RAII is a programming idiom that ensures resource allocation is tied to object lifetime, thus guaranteeing resource release when the object goes out of scope.
+
+## Principles
+
+- **Resource Acquisition**: Acquire resources in the object's constructor.
+- **Resource Release**: Release resources in the object's destructor.
+- **Scope-Bound Resource Management**: Resources are automatically managed based on scope.
+
+## Benefits
+
+- **Exception Safety**: Resources are properly released even if an exception occurs.
+- **Simplified Resource Management**: No need to manually manage resources.
+- **Prevent Resource Leaks**: Ensures resources like memory, file handles, and locks are released.
+
+## Common Use Cases
+
+- **Smart Pointers**: Automatically delete dynamically allocated memory.
+- **File Streams**: Close files when the stream object goes out of scope.
+- **Mutex Locks**: Release locks when the lock object is destroyed.
+
+## Implementation Example
+
+```cpp
+void writeToFile() {
+    std::ofstream file("example.txt");  // Resource acquired
+    if (file.is_open()) {
+        file << "Hello, World!\n";
+    }
+}  // Resource automatically released when 'file' goes out of scope
+```
+
+## Implementation
+
+See [raii.cpp](raii.cpp) for code demonstrating the RAII principle.
+
+---
+
+## **StackHeap**
+
+### **[README.md](StackHeap/README.md)**
+
+# Stack vs. Heap
+
+## Overview
+
+Memory in C++ is managed in two primary areas: the stack and the heap. Understanding the differences is essential for resource management and performance optimization.
+
+## Stack Memory
+
+- **Characteristics**:
+  - Automatic storage duration.
+  - Fast allocation and deallocation.
+  - Limited size.
+- **Usage**:
+  - Local variables.
+  - Function parameters.
+- **Scope**:
+  - Variables are destroyed when they go out of scope.
+
+## Heap Memory
+
+- **Characteristics**:
+  - Dynamic storage duration.
+  - Managed manually using `new` and `delete`.
+  - Larger in size compared to the stack.
+- **Usage**:
+  - Objects that need to persist beyond the scope they were created in.
+  - Large data structures.
+- **Responsibility**:
+  - Programmer must manage allocation and deallocation to prevent leaks.
+
+## Performance Considerations
+
+- **Stack Allocation**: Faster due to simple pointer arithmetic.
+- **Heap Allocation**: Slower due to complex bookkeeping.
+
+## Implementation
+
+See [stack\_heap.cpp](stack_heap.cpp) for examples of allocating memory on the stack and heap.
+
+---
+
+## **NewDelete**
+
+### **[README.md](NewDelete/README.md)**
+
+# New/Delete vs. Malloc/Free
+
+## Overview
+
+C++ provides `new` and `delete` operators for dynamic memory management, which are type-safe and invoke constructors/destructors. In contrast, C-style `malloc` and `free` manage raw memory and do not handle object initialization or cleanup.
+
+## `new` and `delete`
+
+- **`new` Operator**:
+  - Allocates memory.
+  - Calls the object's constructor.
+  - Returns a pointer of the appropriate type.
+- **`delete` Operator**:
+  - Calls the object's destructor.
+  - Deallocates memory.
+- **Syntax**:
+
+  ```cpp
+  Type* ptr = new Type(args);
+  delete ptr;
+  ```
+
+## `malloc` and `free`
+
+- **`malloc` Function**:
+  - Allocates raw memory.
+  - Does **not** call constructors.
+  - Returns a `void*` pointer; requires casting.
+- **`free` Function**:
+  - Deallocates memory.
+  - Does **not** call destructors.
+- **Syntax**:
+
+  ```cpp
+  Type* ptr = (Type*)malloc(sizeof(Type));
+  free(ptr);
+  ```
+
+## Differences
+
+- **Type Safety**: `new` returns a typed pointer; `malloc` returns `void*`.
+- **Object Lifecycle**: `new`/`delete` manage constructors/destructors; `malloc`/`free` do not.
+- **Overloading**: `new` and `delete` can be overloaded for custom behavior.
+
+## Best Practices
+
+- **Prefer `new`/`delete`**: When working in C++, use `new` and `delete` to ensure proper object management.
+- **Avoid Mixing**: Do not mix `malloc`/`free` with `new`/`delete` for the same object.
+
+## Implementation
+
+See [new\_delete.cpp](NewDelete/new_delete.cpp) for code demonstrating the differences between `new`/`delete` and `malloc`/`free`.
+
+---
+
+## **CopyConstructorAssignment**
+
+### **[README.md](CopyConstructorAssignment/README.md)**
+
+# Copy Constructor and Assignment Operator
+
+## Overview
+
+Implementing the copy constructor and copy assignment operator is essential when a class manages resources that cannot be copied by default, such as dynamically allocated memory.
+
+## Copy Constructor
+
+- **Purpose**: Initialize a new object as a copy of an existing object.
+
+- **Syntax**:
+
+  ```cpp
+  ClassName(const ClassName& other);
+  ```
+
+- **Deep vs. Shallow Copy**:
+  - **Deep Copy**: Copies the resource pointed to, creating a separate instance.
+  - **Shallow Copy**: Copies the pointer value, leading to multiple objects pointing to the same resource.
+
+## Copy Assignment Operator
+
+- **Purpose**: Assign the value from one existing object to another existing object.
+
+- **Syntax**:
+
+  ```cpp
+  ClassName& operator=(const ClassName& other);
+  ```
+
+- **Self-Assignment Check**: Essential to handle cases where an object is assigned to itself.
+
+  ```cpp
+  if (this == &other) return *this;
+  ```
+
+## Steps to Implement
+
+1. **Check for Self-Assignment**.
+2. **Release Any Resources** the object is holding.
+3. **Allocate New Resources** and copy the data.
+4. **Return `*this`** to allow chained assignments.
+
+## When to Implement
+
+- When your class manages resources like dynamic memory, file handles, or network connections.
+- If the default copy behavior (member-wise copying) is insufficient.
+
+## Implementation
+
+See [copy\_constructor\_assignment.cpp](CopyConstructorAssignment/copy_constructor_assignment.cpp) for code demonstrating how to implement a copy constructor and copy assignment operator.
+
+---
+
+## **MoveConstructorAssignment**
+
+### **[README.md](MoveConstructorAssignment/README.md)**
+
+# Move Constructor and Move Assignment Operator
+
+## Overview
+
+Move semantics allow the resources owned by an rvalue object to be moved rather than copied, providing performance benefits by eliminating unnecessary deep copies.
+
+## Move Constructor
+
+- **Purpose**: Initialize a new object by transferring the resources from an rvalue object.
+
+- **Syntax**:
+
+  ```cpp
+  ClassName(ClassName&& other) noexcept;
+  ```
+
+- **Implementation**:
+  - Transfer ownership of resources.
+  - Set the source object's pointers to `nullptr` to avoid double deletion.
+
+## Move Assignment Operator
+
+- **Purpose**: Transfer resources from an rvalue object to an existing object.
+
+- **Syntax**:
+
+  ```cpp
+  ClassName& operator=(ClassName&& other) noexcept;
+  ```
+
+- **Implementation**:
+  - Check for self-assignment.
+  - Release any resources held by the current object.
+  - Transfer ownership of resources.
+  - Set the source object's pointers to `nullptr`.
+
+## `std::move`
+
+- **Purpose**: Casts an lvalue to an rvalue reference to enable move semantics.
+- **Usage**:
+
+  ```cpp
+  ClassName obj1;
+  ClassName obj2 = std::move(obj1);  // Invokes move constructor
+  ```
+
+## When to Implement
+
+- When your class manages resources that are expensive to copy.
+- To optimize performance by eliminating unnecessary copies.
+
+## Implementation
+
+See [move\_constructor\_assignment.cpp](MoveConstructorAssignment/move_constructor_assignment.cpp) for code demonstrating move semantics and the use of `std::move`.
+
+---
+
+## **RuleOfThreeFiveZero**
+
+### **[README.md](RuleOfThreeFiveZero/README.md)**
+
+# Rule of Three, Five, and Zero
+
+## Overview
+
+These rules provide guidelines on when to explicitly define special member functions in your classes.
+
+## Rule of Three
+
+- **Applies When**: Your class manages resources (e.g., dynamic memory).
+- **Members to Define**:
+  1. **Destructor**: To release resources.
+  2. **Copy Constructor**: To handle copying of resources.
+  3. **Copy Assignment Operator**: To assign resources from one object to another.
+
+## Rule of Five
+
+- **Extends Rule of Three**: Includes move semantics.
+- **Additional Members to Define**:
+  4\. **Move Constructor**: To transfer resources during initialization.
+  5\. **Move Assignment Operator**: To transfer resources during assignment.
+
+## Rule of Zero
+
+- **Applies When**: Your class does not manage resources.
+- **Guideline**: Do not define any special member functions; use compiler-generated defaults.
+
+## Best Practices
+
+- **Consistency**: Ensure that resource management is correctly handled in all scenarios.
+- **Avoiding Bugs**: Properly implementing these functions prevents resource leaks and undefined behavior.
+
+## Implementation
+
+See [rule\_of\_three\_five\_zero.cpp](RuleOfThreeFiveZero/rule_of_three_five_zero.cpp) for examples demonstrating when to implement or omit special member functions.
+
+---
+
+## **Inheritance**
+
+### **[README.md](Inheritance/README.md)**
+
+# Inheritance
+
+## Overview
+
+Inheritance allows a new class to extend or modify the behavior of an existing class, promoting code reuse and establishing a hierarchical relationship between classes.
+
+## Key Concepts
+
+### Base and Derived Classes
+
+- **Base Class (Super Class)**: The class being inherited from.
+- **Derived Class (Sub Class)**: The class that inherits from the base class.
+
+### Types of Inheritance
+
+- **Public Inheritance**: Public and protected members of the base class become public and protected members of the derived class.
+- **Protected Inheritance**: Public and protected members of the base class become protected members of the derived class.
+- **Private Inheritance**: Public and protected members of the base class become private members of the derived class.
+
+### Syntax
+
+```cpp
+class Derived : public Base {
+    // Additional members
+};
+```
+
+## Virtual Functions
+
+- **Purpose**: Allow derived classes to override methods of the base class.
+- **Polymorphism**: Enables dynamic binding, where the method called depends on the object's actual type at runtime.
+
+```cpp
+class Base {
+public:
+    virtual void method();
+};
+```
+
+- **Override in Derived Class**:
+
+```cpp
+class Derived : public Base {
+public:
+    void method() override;
+};
+```
+
+## Abstract Classes
+
+- **Pure Virtual Functions**: Declared by assigning `0` to a virtual function, making the class abstract.
+
+```cpp
+class AbstractClass {
+public:
+    virtual void pureVirtualFunction() = 0;
+};
+```
+
+## Implementation
+
+See [inheritance.cpp](Inheritance/inheritance.cpp) for examples demonstrating inheritance and virtual functions.
+
+---
+
+## **Polymorphism**
+
+### **[README.md](Polymorphism/README.md)**
+
+# Polymorphism
+
+## Overview
+
+Polymorphism allows objects to be treated as instances of their base type rather than their actual derived type, enabling flexible and extensible code.
+
+## Types of Polymorphism
+
+### Dynamic (Runtime) Polymorphism
+
+- **Achieved Through**: Virtual functions.
+- **Mechanism**: Base class pointers or references can call overridden methods in derived classes.
+- **Use Case**: When behavior needs to vary at runtime depending on the derived class.
+
+```cpp
+Base* ptr = new Derived();
+ptr->virtualFunction();  // Calls Derived's implementation
+```
+
+### Static (Compile-Time) Polymorphism
+
+- **Achieved Through**: Templates and function overloading.
+- **Mechanism**: Code is generated based on the types used during compilation.
+- **Use Case**: When behavior can be determined at compile time.
+
+```cpp
+template <typename T>
+void function(T param);
+
+function<int>(5);     // Generates function for int
+function<double>(3.14); // Generates function for double
+```
+
+## Virtual Functions and Overriding
+
+- **Virtual Function**: A function declared with the `virtual` keyword in the base class.
+- **Override**: Use the `override` keyword in the derived class to indicate that the function is overriding a virtual function.
+
+## Implementation
+
+See [polymorphism.cpp](Polymorphism/polymorphism.cpp) for code demonstrating both dynamic and static polymorphism.
+
+---
+
+## **NonVirtualInterface**
+
+### **[README.md](NonVirtualInterface/README.md)**
+
+# Non-Virtual Interface (NVI)
+
+## Overview
+
+The Non-Virtual Interface (NVI) idiom is a design pattern where public non-virtual functions call private virtual functions. This allows the base class to control the interface while still permitting derived classes to customize behavior.
+
+## Benefits
+
+- **Interface Control**: Base class controls how functions are called and can enforce pre- and post-conditions.
+- **Efficiency**: Reduces the number of virtual calls, which can improve performance.
+- **Extensibility**: Derived classes can still customize behavior through virtual functions.
+
+## Implementation
+
+### Base Class
+
+- **Public Non-Virtual Function**: Provides the interface to clients.
+- **Private Virtual Function**: Allows derived classes to override behavior.
+
+```cpp
+class Base {
+public:
+    void execute() {
+        preProcess();
+        step();
+        postProcess();
+    }
+
+private:
+    void preProcess() {
+        // Common pre-processing
+    }
+
+    virtual void step() = 0;  // Pure virtual function
+
+    void postProcess() {
+        // Common post-processing
+    }
+};
+```
+
+### Derived Class
+
+- **Override Private Virtual Function**:
+
+```cpp
+class Derived : public Base {
+private:
+    void step() override {
+        // Derived-specific implementation
+    }
+};
+```
+
+## Use Cases
+
+- **Template Method Pattern**: NVI is a form of the template method pattern, where the skeleton of an algorithm is defined in the base class, and derived classes provide specific implementations.
+
+## Implementation
+
+See [non\_virtual\_interface.cpp](NonVirtualInterface/non_virtual_interface.cpp) for code demonstrating the NVI idiom.
+
+---
+
+## **SmartPointers**
+
+### **[README.md](SmartPointers/README.md)**
+
+# Smart Pointers
+
+## Overview
+
+Smart pointers are class templates that manage dynamic memory automatically, helping to prevent memory leaks and dangling pointers.
+
+## Types of Smart Pointers
+
+### `unique_ptr`
+
+- **Ownership Model**: Exclusive ownership; only one `unique_ptr` can own a resource at a time.
+
+- **Characteristics**:
+  - Non-copyable.
+  - Movable (can transfer ownership).
+
+- **Use Cases**: When a resource should have a single owner.
+
+- **Syntax**:
+
+  ```cpp
+  std::unique_ptr<Type> ptr = std::make_unique<Type>(args);
+  ```
+
+### `shared_ptr`
+
+- **Ownership Model**: Shared ownership; multiple `shared_ptr`s can own the same resource.
+
+- **Characteristics**:
+  - Uses reference counting.
+  - Resource is released when the last `shared_ptr` owning it is destroyed.
+
+- **Use Cases**: When multiple parts of the program need shared access to a resource.
+
+- **Syntax**:
+
+  ```cpp
+  std::shared_ptr<Type> ptr1 = std::make_shared<Type>(args);
+  std::shared_ptr<Type> ptr2 = ptr1;  // Shared ownership
+  ```
+
+### `weak_ptr`
+
+- **Ownership Model**: Non-owning reference to a resource managed by `shared_ptr`.
+
+- **Characteristics**:
+  - Does not affect the reference count.
+  - Must be converted to `shared_ptr` to access the resource safely.
+
+- **Use Cases**: Breaking cyclic references in graphs or observer patterns.
+
+- **Syntax**:
+
+  ```cpp
+  std::weak_ptr<Type> weakPtr = sharedPtr;
+  if (auto lockedPtr = weakPtr.lock()) {
+      // Safe to use lockedPtr
+  }
+  ```
+
+## Benefits
+
+- **Automatic Resource Management**: Resources are released when no longer needed.
+- **Exception Safety**: Prevents leaks even if exceptions occur.
+- **Better Code Clarity**: Expresses ownership semantics explicitly.
+
+## Implementation
+
+- **`unique_ptr` Example**: [unique\_ptr\_example.cpp](SmartPointers/unique_ptr_example.cpp)
+- **`shared_ptr` Example**: [shared\_ptr\_example.cpp](SmartPointers/shared_ptr_example.cpp)
+- **`weak_ptr` Example**: [weak\_ptr\_example.cpp](SmartPointers/weak_ptr_example.cpp)
+
+---
+
+## **Templates**
+
+### **[README.md](Templates/README.md)**
+
+# Templates
+
+## Overview
+
+Templates in C++ allow functions and classes to operate with generic types, enabling code reuse and flexibility.
+
+## Function Templates
+
+- **Definition**:
+
+  ```cpp
+  template <typename T>
+  T functionName(T arg);
+  ```
+
+- **Usage**:
+
+  ```cpp
+  int result = functionName<int>(value);
+  ```
+
+- **Type Deduction**: The compiler can often deduce the template argument from the function arguments.
+
+## Class Templates
+
+- **Definition**:
+
+  ```cpp
+  template <typename T>
+  class ClassName {
+      T member;
+  public:
+      ClassName(T arg);
+  };
+  ```
+
+- **Usage**:
+
+  ```cpp
+  ClassName<int> obj(10);
+  ```
+
+## Template Specialization
+
+### Explicit Specialization
+
+- **Purpose**: Provide a specific implementation for a particular type.
+
+- **Syntax**:
+
+  ```cpp
+  template <>
+  void functionName<int>(int arg) {
+      // Specialized implementation for int
+  }
+  ```
+
+### Partial Specialization
+
+- **Purpose**: Specialize templates based on certain template parameters.
+
+- **Applicable To**: Class templates, not function templates.
+
+## Template Argument Deduction and SFINAE
+
+### Template Argument Deduction
+
+- **Mechanism**: Compiler deduces the template arguments from the function arguments.
+
+### SFINAE (Substitution Failure Is Not An Error)
+
+- **Purpose**: Enable or disable templates based on certain conditions without causing compilation errors.
+
+- **Techniques**:
+  - Use `std::enable_if`.
+  - Utilize type traits from `<type_traits>`.
+
+- **Example**:
+
+  ```cpp
+  template <typename T>
+  typename std::enable_if<std::is_integral<T>::value, void>::type
+  functionName(T arg) {
+      // Implementation for integral types
+  }
+  ```
+
+## Implementation
+
+- **Function Templates**: [function\_templates.cpp](Templates/function_templates.cpp)
+- **Class Templates**: [class\_templates.cpp](Templates/class_templates.cpp)
+- **Template Specialization**: [template\_specialization.cpp](Templates/template_specialization.cpp)
+- **Template Argument Deduction and SFINAE**: [template\_argument\_deduction.cpp](Templates/template_argument_deduction.cpp)
+
+---
+
+## **STLContainers**
+
+### **[README.md](STLContainers/README.md)**
+
+# Standard Template Library (STL) Containers
+
+## Overview
+
+STL provides a set of commonly used containers that implement various data structures, such as arrays, linked lists, trees, and hash tables.
+
+## Containers
+
+### Vector
+
+- **Type**: Dynamic array.
+
+- **Features**:
+  - Fast random access.
+  - Efficient insertion/removal at the end.
+
+- **Usage**:
+
+  ```cpp
+  std::vector<int> vec = {1, 2, 3};
+  vec.push_back(4);
+  ```
+
+- **Implementation**: [vector\_example.cpp](vector_example.cpp)
+
+### List
+
+- **Type**: Doubly linked list.
+
+- **Features**:
+  - Efficient insertion/removal anywhere.
+  - No random access.
+
+- **Usage**:
+
+  ```cpp
+  std::list<int> lst = {1, 2, 3};
+  lst.push_front(0);
+  ```
+
+- **Implementation**: [list\_example.cpp](list_example.cpp)
+
+### Set
+
+- **Type**: Ordered collection of unique elements.
+
+- **Features**:
+  - Fast lookup, insertion, and deletion.
+  - Elements are sorted.
+
+- **Usage**:
+
+  ```cpp
+  std::set<int> s = {3, 1, 2};
+  s.insert(4);
+  ```
+
+- **Implementation**: [set\_example.cpp](set_example.cpp)
+
+### Map
+
+- **Type**: Associative array (key-value pairs).
+
+- **Features**:
+  - Fast retrieval based on keys.
+  - Keys are unique and sorted.
+
+- **Usage**:
+
+  ```cpp
+  std::map<std::string, int> m;
+  m["Alice"] = 30;
+  ```
+
+- **Implementation**: [map\_example.cpp](map_example.cpp)
+
+### Unordered Map
+
+- **Type**: Hash table implementation of map.
+
+- **Features**:
+  - Faster access for large datasets.
+  - Keys are not sorted.
+
+- **Usage**:
+
+  ```cpp
+  std::unordered_map<std::string, int> um;
+  um["Bob"] = 25;
+  ```
+
+- **Implementation**: [unordered\_map\_example.cpp](unordered_map_example.cpp)
+
+## Iterators
+
+- **Purpose**: Provide a way to access elements in a container sequentially.
+
+- **Types**:
+  - **Input Iterator**: Read from a sequence.
+  - **Output Iterator**: Write to a sequence.
+  - **Forward Iterator**: Read/write access, move forward.
+  - **Bidirectional Iterator**: Move forward and backward.
+  - **Random Access Iterator**: Full iterator arithmetic.
+
+- **Usage**:
+
+  ```cpp
+  for (auto it = container.begin(); it != container.end(); ++it) {
+      // Access *it
+  }
+  ```
+
+- **Implementation**: [iterators.cpp](../Iterators/iterators.cpp)
+
+---
+
+## **Algorithms**
+
+### **[README.md](Algorithms/README.md)**
+
+# STL Algorithms
+
+## Overview
+
+The Standard Template Library provides a set of generic algorithms that can be used with containers and iterators.
+
+## Common Algorithms
+
+### `find`
+
+- **Purpose**: Search for an element equal to a given value.
+- **Usage**:
+
+  ```cpp
+  auto it = std::find(container.begin(), container.end(), value);
+  ```
+
+### `for_each`
+
+- **Purpose**: Apply a function to each element in a range.
+- **Usage**:
+
+  ```cpp
+  std::for_each(container.begin(), container.end(), [](Type& elem) {
+      // Operation on elem
+  });
+  ```
+
+### `copy`
+
+- **Purpose**: Copy elements from one range to another.
+- **Usage**:
+
+  ```cpp
+  std::copy(src.begin(), src.end(), dest.begin());
+  ```
+
+### `sort`
+
+- **Purpose**: Sort elements in a range.
+- **Usage**:
+
+  ```cpp
+  std::sort(container.begin(), container.end());
+  ```
+
+### `reverse`
+
+- **Purpose**: Reverse elements in a range.
+- **Usage**:
+
+  ```cpp
+  std::reverse(container.begin(), container.end());
+  ```
+
+## Iterators and Algorithms
+
+- Algorithms operate on iterators, making them flexible and compatible with different containers.
+- **Example**: Using `std::copy` with an `ostream_iterator` to output elements.
+
+  ```cpp
+  std::copy(vec.begin(), vec.end(), std::ostream_iterator<int>(std::cout, " "));
+  ```
+
+## Implementation
+
+See [algorithms.cpp](algorithms.cpp) for code demonstrating various STL algorithms.
+
+---
+
+## **CRTP**
+
+### **[README.md](CRTP/README.md)**
+
+# Curiously Recurring Template Pattern (CRTP)
+
+## Overview
+
+CRTP is a template pattern where a class `Derived` inherits from a class template instantiation of `Base<Derived>`. It allows static polymorphism and code reuse at compile time.
+
+## Structure
+
+```cpp
+template <typename Derived>
+class Base {
+public:
+    void interface() {
+        static_cast<Derived*>(this)->implementation();
+    }
+};
+
+class Derived : public Base<Derived> {
+public:
+    void implementation() {
+        // Derived-specific implementation
+    }
+};
+```
+
+## Benefits
+
+- **Static Polymorphism**: Polymorphic behavior is resolved at compile time.
+- **No Runtime Overhead**: Eliminates the need for virtual functions and vtables.
+- **Code Reuse**: Base class provides common functionality that can be customized by the derived class.
+
+## Use Cases
+
+- **Mixins**: Add functionality to classes through inheritance.
+- **Policy Classes**: Implement different behaviors based on the derived class.
+
+## Implementation
+
+See [crtp.cpp](crtp.cpp) for code demonstrating the CRTP pattern.
+
+---
+
+## **PolicyBasedDesign**
+
+### **[README.md](PolicyBasedDesign/README.md)**
+
+# Policy-Based Design
+
+## Overview
+
+Policy-based design is a programming technique that uses templates to allow behaviors (policies) to be selected at compile time. It promotes code flexibility and reusability.
+
+## Structure
+
+- **Policy Classes**: Classes that define specific behaviors or strategies.
+
+  ```cpp
+  class SortingPolicy {
+  public:
+      void sortImplementation();
+  };
+  ```
+
+- **Host Class**: A class template that uses policy classes.
+
+  ```cpp
+  template <typename SortingPolicy>
+  class Sorter : public SortingPolicy {
+  public:
+      void sort() {
+          this->sortImplementation();
+      }
+  };
+  ```
+
+## Benefits
+
+- **Flexibility**: Change behaviors without modifying the host class.
+- **Compile-Time Optimization**: Decisions are made at compile time, potentially improving performance.
+- **Modularity**: Separate different aspects of functionality into independent policies.
+
+## Use Cases
+
+- **Strategy Pattern**: Implement different algorithms or behaviors that can be selected at compile time.
+- **Custom Containers**: Define storage and allocation policies.
+
+## Implementation
+
+See [policy\_based\_design.cpp](policy_based_design.cpp) for code demonstrating policy-based design.
+
+---
+
+## **TypeBasedDispatching**
+
+### **[README.md](TypeBasedDispatching/README.md)**
+
+# Type-Based Dispatching
+
+## Overview
+
+Type-based dispatching is a technique where function behavior is selected based on type traits evaluated at compile time.
+
+## Techniques
+
+### `if constexpr`
+
+- **Usage**: Allows compile-time branching based on type traits.
+
+  ```cpp
+  template <typename T>
+  void process(T value) {
+      if constexpr (std::is_integral_v<T>) {
+          // Implementation for integral types
+      } else {
+          // Implementation for other types
+      }
+  }
+  ```
+
+### Type Traits
+
+- **Header**: `<type_traits>`
+- **Common Traits**:
+  - `std::is_integral<T>`: Checks if `T` is an integral type.
+  - `std::is_floating_point<T>`: Checks if `T` is a floating-point type.
+  - `std::is_same<T, U>`: Checks if `T` and `U` are the same type.
+
+### Benefits
+
+- **Compile-Time Optimization**: Unnecessary code paths are discarded at compile time.
+- **Type Safety**: Ensures that only valid operations are performed on types.
+
+## Use Cases
+
+- **Function Overloads**: Selecting different function implementations based on type properties.
+- **Template Specialization**: Providing specific implementations for certain types.
+
+## Implementation
+
+See [type\_based\_dispatching.cpp](type_based_dispatching.cpp) for code demonstrating type-based dispatching using `if constexpr` and type traits.
+
+---
+
+**Note**: Each topic's `README.md` provides a deeper dive into the subject, offering explanations, syntax examples, and references to the implementation files for practical understanding.
+
+---
+
+**Happy Studying and Best of Luck on Your Exam!**
