@@ -19,8 +19,8 @@ class Derived : public Base {
 public:
     void accessMembers() {
         publicVar = 1;       // Accessible
-        protectedVar = 2;    // Accessible
-        // privateVar = 3;   // Not accessible
+        protectedVar = 2;    // Accessible inside derived class
+        // privateVar = 3;   // Not accessible in derived class
     }
 };
 
