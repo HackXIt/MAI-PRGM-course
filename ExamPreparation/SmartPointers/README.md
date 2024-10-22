@@ -1,4 +1,4 @@
-﻿# Smart Pointers
+# Smart Pointers
 
 ## Overview
 
@@ -69,6 +69,6 @@ Smart pointers are class templates that manage dynamic memory automatically, hel
 
 ## Implementation
 
-- **`unique_ptr` Example**: [unique\_ptr\_example.cpp](SmartPointers/unique_ptr_example.cpp)
-- **`shared_ptr` Example**: [shared\_ptr\_example.cpp](SmartPointers/shared_ptr_example.cpp)
-- **`weak_ptr` Example**: [weak\_ptr\_example.cpp](SmartPointers/weak_ptr_example.cpp)
+- **`unique_ptr` Example**: [unique\_ptr\_example.cpp](./unique_ptr_example.cpp)
+- **`shared_ptr` Example**: [shared\_ptr\_example.cpp](./shared_ptr_example.cpp)
+- **`weak_ptr` Example**: [weak\_ptr\_example.cpp](./weak_ptr_example.cpp)
